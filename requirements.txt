@@ -5,3 +5,4 @@ requests
 Pillow
 streamlit_folium
 streamlit_option_menu
+streamlit-js-geolocation
