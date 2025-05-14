@@ -17,6 +17,7 @@ import requests
 from requests.exceptions import ConnectionError
 
 
+
 def config():
     file_path = "./components /img/"
     img = Image.open(os.path.join(file_path, 'logo.ico'))
@@ -46,9 +47,19 @@ def config():
 
 
 def get_geolocation():
-    key = "1c5f04e925bc4b40b4c83b04175e321e"
-    response = requests.get("https://api.ipgeolocation.io/ipgeo?apiKey=" + key)
-    return response.json()
+    try:
+        response = requests.get("https://ipinfo.io/json").json()
+        return {
+            "ip": response.get("ip"),
+            "city": response.get("city"),
+            "region": response.get("region"),
+            "country": response.get("country"),
+            "latitude": response.get("loc", "").split(",")[0] if response.get("loc") else None,
+            "longitude": response.get("loc", "").split(",")[1] if response.get("loc") else None,
+        }
+    except Exception as e:
+        st.error(f"Failed to fetch location: {e}")
+        return None
 
 
 def other_tab():
