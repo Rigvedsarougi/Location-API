@@ -46,7 +46,7 @@ def config():
 
 
 def get_geolocation():
-    key = "API_KEY"
+    key = "1c5f04e925bc4b40b4c83b04175e321e"
     response = requests.get("https://api.ipgeolocation.io/ipgeo?apiKey=" + key)
     return response.json()
 
