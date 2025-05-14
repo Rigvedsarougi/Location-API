@@ -18,7 +18,7 @@ from requests.exceptions import ConnectionError
 
 
 def config():
-    file_path = "./components/img/"
+    file_path = "./components /img/"
     img = Image.open(os.path.join(file_path, 'logo.ico'))
     st.set_page_config(page_title='GEO LOCATION APP', page_icon=img, layout="wide", initial_sidebar_state="expanded")
 
